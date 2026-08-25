@@ -1,0 +1,133 @@
+# ================================================
+# YTDown - Python Requirements
+# Version: 1.0.0
+# Author: Raj Gautam
+# ================================================
+
+# ================================================
+# CORE DEPENDENCIES
+# ================================================
+
+# GUI Framework - Mobile optimized Tkinter wrapper
+thinker>=1.1.1,<2.0.0
+
+# YouTube Download Engine
+yt-dlp>=2024.12.0,<2025.0.0
+
+# HTTP Requests Library
+requests>=2.31.0,<3.0.0
+
+# Image Processing for Thumbnails
+Pillow>=10.1.0,<11.0.0
+
+# Path Manipulation
+pathlib>=1.0.1
+
+# JSON Configuration
+json5>=0.9.14,<1.0.0
+
+# ================================================
+# TERMUX SPECIFIC PACKAGES
+# ================================================
+
+# Termux API Integration (Optional)
+termux-api>=0.0.1
+
+# ================================================
+# DEVELOPMENT DEPENDENCIES
+# ================================================
+
+# Code Quality & Linting (Development Only)
+# flake8>=6.1.0,<7.0.0
+# pylint>=3.0.0,<4.0.0
+# black>=23.11.0,<24.0.0
+# isort>=5.12.0,<6.0.0
+# mypy>=1.7.0,<2.0.0
+
+# Testing Framework (Development Only)
+# pytest>=7.4.0,<8.0.0
+# pytest-cov>=4.1.0,<5.0.0
+# pytest-xdist>=3.5.0,<4.0.0
+# pytest-html>=4.1.0,<5.0.0
+
+# Security Scanning (Development Only)
+# bandit>=1.7.0,<2.0.0
+# safety>=2.3.0,<3.0.0
+
+# Documentation (Development Only)
+# mkdocs>=1.5.0,<2.0.0
+# mkdocs-material>=9.5.0,<10.0.0
+# mkdocstrings>=0.24.0,<1.0.0
+
+# ================================================
+# OPTIONAL UTILITIES
+# ================================================
+
+# Progress Bar Enhancement
+# tqdm>=4.66.0,<5.0.0
+
+# Color Support for CLI
+# colorama>=0.4.6,<1.0.0
+
+# Advanced JSON Support
+# simplejson>=3.19.0,<4.0.0
+
+# ================================================
+# FFMPEG - External Dependency (System Level)
+# ================================================
+# FFmpeg is required for audio extraction and video processing
+# Install via:
+#   Linux: sudo apt-get install ffmpeg
+#   Termux: pkg install ffmpeg
+#   macOS: brew install ffmpeg
+#   Windows: Download from https://ffmpeg.org/download.html
+
+# ================================================
+# INSTALLATION COMMANDS
+# ================================================
+# Basic Installation:
+#   pip install -r requirements.txt
+#
+# Development Installation:
+#   pip install -r requirements.txt --extra-index-url https://test.pypi.org/simple/
+#
+# Offline Installation:
+#   pip install --no-index --find-links ./packages -r requirements.txt
+
+# ================================================
+# VERSION COMPATIBILITY
+# ================================================
+# Python >= 3.8 Required
+# Python 3.13 Recommended for best performance
+# Python 3.7 or lower may cause compatibility issues
+
+# ================================================
+# DEPENDENCY NOTES
+# ================================================
+# 1. thinker: Custom Tkinter wrapper for mobile optimization
+# 2. yt-dlp: YouTube download engine (requires frequent updates)
+# 3. requests: For HTTP operations and API calls
+# 4. Pillow: For thumbnail processing and image handling
+# 5. pathlib: For cross-platform path management
+
+# ================================================
+# COMMON ISSUES & FIXES
+# ================================================
+# 1. thinker not found:
+#    pip install thinker --index-url https://pypi.org/simple/
+#
+# 2. yt-dlp update:
+#    pip install --upgrade yt-dlp
+#
+# 3. FFmpeg not found:
+#    Install system-level FFmpeg as shown above
+#
+# 4. Permission issues:
+#    pip install --user -r requirements.txt
+#
+# 5. Network issues:
+#    pip install --retries=5 -r requirements.txt
+
+# ================================================
+# END OF REQUIREMENTS
+# ================================================
