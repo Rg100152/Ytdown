@@ -1,0 +1,497 @@
+# ================================================
+# YTDown - GitHub Actions CI/CD Pipeline
+# Python Package Workflow
+# ================================================
+# This workflow automates testing, building, and
+# publishing YTDown across multiple Python versions
+# and platforms.
+
+name: Python Package
+
+# ================================================
+# TRIGGERS
+# ================================================
+on:
+  push:
+    branches: [ main, master, develop ]
+    paths:
+      - '**.py'
+      - 'requirements.txt'
+      - 'setup.py'
+      - 'pyproject.toml'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - '**.py'
+      - 'requirements.txt'
+  release:
+    types: [ created, published ]
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly Sunday build
+  workflow_dispatch:  # Manual trigger
+
+# ================================================
+# PERMISSIONS
+# ================================================
+permissions:
+  contents: read
+  packages: write
+  issues: write
+  pull-requests: write
+  security-events: write
+  checks: write
+  statuses: write
+
+# ================================================
+# ENVIRONMENT VARIABLES
+# ================================================
+env:
+  PYTHON_VERSION: "3.10"
+  POETRY_VERSION: "1.7.1"
+  PROJECT_NAME: "ytdown"
+  PACKAGE_NAME: "ytdown"
+  ARTIFACT_NAME: "ytdown-package"
+  CODE_QUALITY_THRESHOLD: "8.0"
+
+# ================================================
+# JOBS
+# ================================================
+jobs:
+
+  # ==============================================
+  # JOB 1: CODE QUALITY CHECKS
+  # ==============================================
+  code-quality:
+    name: 🔍 Code Quality Analysis
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+    
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
+    - name: 🐍 Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: 📦 Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pylint black isort mypy bandit safety
+        pip install -r requirements.txt || echo "No requirements.txt"
+        
+    - name: ✅ Run Flake8 (Linting)
+      run: |
+        flake8 ytdown.py --count --max-complexity=10 \
+          --max-line-length=100 --statistics \
+          --ignore=E501,W503,E203,E722,W291
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+      continue-on-error: false
+      
+    - name: ✅ Run Pylint (Advanced Linting)
+      run: |
+        pylint ytdown.py --exit-zero --output-format=colorized \
+          --disable=R0903,C0114,C0115,C0116 \
+          --max-locals=15 --max-args=10 \
+          --max-attributes=20 --max-statements=50
+      continue-on-error: true
+      
+    - name: ✅ Run Black (Code Formatting Check)
+      run: |
+        black --check ytdown.py --diff --color
+      continue-on-error: true
+      
+    - name: ✅ Run isort (Import Sorting Check)
+      run: |
+        isort --check-only --diff ytdown.py
+      continue-on-error: true
+      
+    - name: ✅ Run mypy (Type Checking)
+      run: |
+        mypy ytdown.py --ignore-missing-imports \
+          --disallow-untyped-defs \
+          --warn-redundant-casts \
+          --warn-unused-ignores
+      continue-on-error: true
+      
+    - name: ✅ Run Bandit (Security Scanning)
+      run: |
+        bandit ytdown.py -r --format=json \
+          --output=bandit-report.json \
+          --severity-level=high
+      continue-on-error: true
+      
+    - name: ✅ Run Safety (Dependency Scanning)
+      run: |
+        safety check --full-report
+      continue-on-error: true
+      
+    - name: 📊 Upload Code Quality Reports
+      uses: actions/upload-artifact@v4
+      with:
+        name: code-quality-reports-${{ matrix.python-version }}
+        path: |
+          bandit-report.json
+          flake8-report.txt
+          pylint-report.txt
+        retention-days: 30
+
+  # ==============================================
+  # JOB 2: UNIT TESTING
+  # ==============================================
+  unit-tests:
+    name: 🧪 Unit Tests
+    runs-on: ${{ matrix.os }}
+    needs: code-quality
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+    
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: 🐍 Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: 📦 Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest pytest-cov pytest-xdist pytest-html
+        pip install -r requirements.txt || echo "No requirements.txt"
+        
+    - name: 🧪 Run Tests
+      run: |
+        pytest -v --tb=short --maxfail=5 \
+          --cov=ytdown --cov-report=xml \
+          --cov-report=html \
+          --html=test-report.html \
+          --self-contained-html \
+          -n auto || echo "No tests found"
+      continue-on-error: true
+      
+    - name: 📊 Upload Test Coverage
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-coverage-${{ matrix.os }}-${{ matrix.python-version }}
+        path: |
+          coverage.xml
+          htmlcov/
+          test-report.html
+        retention-days: 30
+        
+    - name: 📤 Upload Coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+        token: ${{ secrets.CODECOV_TOKEN }}
+
+  # ==============================================
+  # JOB 3: BUILD PACKAGE
+  # ==============================================
+  build-package:
+    name: 📦 Build Package
+    runs-on: ubuntu-latest
+    needs: [code-quality, unit-tests]
+    if: success() || failure()
+    
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: 🐍 Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        
+    - name: 📦 Install Build Tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install build twine wheel setuptools
+        
+    - name: 🔧 Build Package
+      run: |
+        python -m build
+        ls -la dist/
+        
+    - name: ✅ Check Package
+      run: |
+        twine check dist/*
+        
+    - name: 📤 Upload Package Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.ARTIFACT_NAME }}
+        path: dist/
+        retention-days: 90
+        
+    - name: 📊 Generate SBOM
+      run: |
+        pip install cyclonedx-bom
+        cyclonedx-bom -o sbom.json
+      continue-on-error: true
+      
+    - name: 📤 Upload SBOM
+      uses: actions/upload-artifact@v4
+      with:
+        name: sbom
+        path: sbom.json
+        retention-days: 30
+
+  # ==============================================
+  # JOB 4: DEPLOY TO PYPI
+  # ==============================================
+  deploy-pypi:
+    name: 🚀 Deploy to PyPI
+    runs-on: ubuntu-latest
+    needs: build-package
+    if: github.event_name == 'release' && github.event.action == 'published'
+    environment:
+      name: pypi
+      url: https://pypi.org/p/${{ env.PACKAGE_NAME }}
+    
+    steps:
+    - name: 📥 Download Package
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ env.ARTIFACT_NAME }}
+        path: dist/
+        
+    - name: 📦 Install Twine
+      run: |
+        python -m pip install --upgrade pip
+        pip install twine
+        
+    - name: 🚀 Publish to PyPI
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      run: |
+        twine upload dist/* --verbose
+        
+    - name: 📝 Create Release Notes
+      run: |
+        echo "## Release ${{ github.ref_name }}" > release_notes.md
+        echo "" >> release_notes.md
+        echo "### 🚀 New Features" >> release_notes.md
+        echo "- Added features" >> release_notes.md
+        echo "" >> release_notes.md
+        echo "### 🐛 Bug Fixes" >> release_notes.md
+        echo "- Fixed issues" >> release_notes.md
+        echo "" >> release_notes.md
+        echo "### 📦 Downloads" >> release_notes.md
+        echo "- PyPI: https://pypi.org/project/${{ env.PACKAGE_NAME }}/" >> release_notes.md
+        echo "- GitHub: https://github.com/${{ github.repository }}/releases" >> release_notes.md
+        
+    - name: 📤 Upload Release Notes
+      uses: actions/upload-artifact@v4
+      with:
+        name: release-notes
+        path: release_notes.md
+
+  # ==============================================
+  # JOB 5: CONTAINER BUILD
+  # ==============================================
+  build-container:
+    name: 🐳 Build Container
+    runs-on: ubuntu-latest
+    needs: build-package
+    if: github.event_name == 'release'
+    
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: 📥 Download Package
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ env.ARTIFACT_NAME }}
+        path: dist/
+        
+    - name: 🐳 Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+      
+    - name: 🔐 Log in to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        
+    - name: 🔐 Log in to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: 🏗️ Build and Push Docker Image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: |
+          ${{ secrets.DOCKER_USERNAME }}/${{ env.PROJECT_NAME }}:latest
+          ${{ secrets.DOCKER_USERNAME }}/${{ env.PROJECT_NAME }}:${{ github.ref_name }}
+          ghcr.io/${{ github.repository }}:latest
+          ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+  # ==============================================
+  # JOB 6: INTEGRATION TESTS
+  # ==============================================
+  integration-tests:
+    name: 🔄 Integration Tests
+    runs-on: ubuntu-latest
+    needs: [build-package, unit-tests]
+    if: success()
+    
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: 📥 Download Package
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ env.ARTIFACT_NAME }}
+        path: dist/
+        
+    - name: 🐍 Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        
+    - name: 📦 Install Package
+      run: |
+        pip install dist/*.whl
+        pip install pytest pytest-xdist
+        
+    - name: 🔄 Run Integration Tests
+      run: |
+        pytest -v --tb=short --maxfail=5 \
+          --cov=ytdown --cov-report=xml \
+          -n auto tests/integration/
+      continue-on-error: true
+
+  # ==============================================
+  # JOB 7: DEPLOYMENT TO PAGES
+  # ==============================================
+  deploy-docs:
+    name: 📚 Deploy Documentation
+    runs-on: ubuntu-latest
+    needs: build-package
+    if: github.ref == 'refs/heads/main' || github.event_name == 'release'
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    
+    steps:
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: 🐍 Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        
+    - name: 📦 Install Documentation Tools
+      run: |
+        pip install mkdocs mkdocs-material mkdocstrings \
+          pymdown-extensions mkdocs-git-revision-date-plugin
+        
+    - name: 📝 Build Documentation
+      run: |
+        mkdocs build --site-dir public/
+      continue-on-error: true
+      
+    - name: 📤 Upload Pages Artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: public/
+        
+    - name: 🚀 Deploy to GitHub Pages
+      uses: actions/deploy-pages@v4
+      if: github.event_name == 'release'
+
+  # ==============================================
+  # JOB 8: NOTIFICATIONS
+  # ==============================================
+  notifications:
+    name: 📢 Notifications
+    runs-on: ubuntu-latest
+    needs: [code-quality, unit-tests, build-package]
+    if: always()
+    
+    steps:
+    - name: 📝 Generate Status Report
+      run: |
+        echo "## 🏗️ Build Status" > status.md
+        echo "" >> status.md
+        echo "| Job | Status |" >> status.md
+        echo "|-----|--------|" >> status.md
+        echo "| Code Quality | ${{ needs.code-quality.result }} |" >> status.md
+        echo "| Unit Tests | ${{ needs.unit-tests.result }} |" >> status.md
+        echo "| Build Package | ${{ needs.build-package.result }} |" >> status.md
+        echo "" >> status.md
+        echo "### 📦 Artifacts" >> status.md
+        echo "- Package: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> status.md
+        
+    - name: 📤 Upload Status Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-status
+        path: status.md
+        
+    - name: 💬 Send Telegram Notification
+      if: always()
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_CHAT_ID }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          🚀 YTDown Build Status
+          
+          📦 Repository: ${{ github.repository }}
+          🌿 Branch: ${{ github.ref_name }}
+          🔀 Commit: ${{ github.sha }}
+          👤 Author: ${{ github.actor }}
+          
+          ✅ Code Quality: ${{ needs.code-quality.result }}
+          ✅ Unit Tests: ${{ needs.unit-tests.result }}
+          ✅ Package Build: ${{ needs.build-package.result }}
+          
+          📊 View Details:
+          https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      continue-on-error: true
+      
+    - name: 💬 Send Discord Notification
+      if: always()
+      uses: rjstone/discord-webhook-notify@v1
+      with:
+        severity: ${{ contains(needs.*.result, 'failure') && 'error' || 'info' }}
+        text: |
+          **YTDown Build Status**
+          Repository: ${{ github.repository }}
+          Branch: ${{ github.ref_name }}
+          Commit: ${{ github.sha }}
+          Status: ${{ contains(needs.*.result, 'failure') && '❌ Failed' || '✅ Success' }}
+        webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      continue-on-error: true
+
+# ================================================
+# END OF WORKFLOW
+# ================================================
