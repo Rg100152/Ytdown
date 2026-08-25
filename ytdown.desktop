@@ -1,0 +1,333 @@
+[Desktop Entry]
+# ================================================
+# YTDown Desktop Entry
+# Version: 1.0.0
+# Author: Raj Gautam
+# License: MIT
+# ================================================
+
+# ================================================
+# BASIC INFORMATION
+# ================================================
+
+# Application Name
+Name=YTDown
+Name[en]=YTDown
+Name[en_US]=YTDown
+Name[en_GB]=YTDown
+Name[hi]=वाईटीडाउन
+Name[es]=YTDown
+Name[fr]=YTDown
+Name[de]=YTDown
+Name[pt]=YTDown
+Name[ru]=YTDown
+Name[ja]=YTDown
+Name[zh_CN]=YTDown
+Name[ar]=YTDown
+
+# Application Name (Generic)
+GenericName=YouTube Downloader
+GenericName[en]=YouTube Downloader
+GenericName[hi]=यूट्यूब डाउनलोडर
+GenericName[es]=Descargador de YouTube
+GenericName[fr]=Téléchargeur YouTube
+GenericName[de]=YouTube-Downloader
+GenericName[pt]=Downloader do YouTube
+GenericName[ru]=Загрузчик YouTube
+GenericName[ja]=YouTubeダウンローダー
+GenericName[zh_CN]=YouTube下载器
+
+# Application Name (Short)
+Name[short]=YTDown
+
+# ================================================
+# APPLICATION COMMAND
+# ================================================
+
+# Main Executable
+Exec=ytdown %F
+
+# Alternative Commands
+TryExec=ytdown
+
+# ================================================
+# ICON SETTINGS
+# ================================================
+
+# Icon Location
+Icon=ytdown
+
+# Alternative Icon Paths
+Icon[1]=/usr/share/icons/hicolor/256x256/apps/ytdown.png
+Icon[2]=/usr/local/share/icons/ytdown.png
+Icon[3]=~/.local/share/icons/ytdown.png
+Icon[4]=/usr/share/pixmaps/ytdown.png
+
+# ================================================
+# WINDOW SETTINGS
+# ================================================
+
+# Terminal Required
+Terminal=false
+
+# Startup Notification
+StartupNotify=true
+
+# Startup WM Class
+StartupWMClass=YTDown
+
+# Window Type
+Type=Application
+
+# ================================================
+# CATEGORIES
+# ================================================
+
+# Primary Categories
+Categories=AudioVideo;Network;Utility;
+
+# Additional Categories
+Categories[1]=Audio;
+Categories[2]=Video;
+Categories[3]=Downloader;
+Categories[4]=Internet;
+
+# ================================================
+# MIME TYPES
+# ================================================
+
+# Supported MIME Types
+MimeType=video/x-youtube;text/html;text/plain;application/x-ytdown;
+
+# ================================================
+# KEYWORDS
+# ================================================
+
+# Search Keywords
+Keywords=youtube;download;video;audio;downloader;yt-dlp;mp4;webm;m4a;mp3;stream;media;
+
+# Language Specific Keywords
+Keywords[hi]=यूट्यूब;डाउनलोड;वीडियो;ऑडियो;मीडिया;
+Keywords[es]=youtube;descargar;video;audio;descargador;
+Keywords[fr]=youtube;télécharger;vidéo;audio;téléchargeur;
+Keywords[de]=youtube;download;video;audio;downloader;
+Keywords[pt]=youtube;baixar;video;audio;baixador;
+Keywords[ru]=youtube;скачать;видео;аудио;загрузчик;
+Keywords[ja]=youtube;ダウンロード;ビデオ;オーディオ;ダウンローダー;
+
+# ================================================
+# DESKTOP ACTIONS
+# ================================================
+
+[Desktop Action download]
+Name=Download Video
+Name[hi]=वीडियो डाउनलोड करें
+Name[es]=Descargar Video
+Name[fr]=Télécharger Vidéo
+Name[de]=Video Herunterladen
+Name[pt]=Baixar Vídeo
+Name[ru]=Скачать Видео
+Name[ja]=ビデオをダウンロード
+Exec=ytdown --download %f
+Icon=ytdown-download
+
+[Desktop Action audio]
+Name=Extract Audio
+Name[hi]=ऑडियो निकालें
+Name[es]=Extraer Audio
+Name[fr]=Extraire l'Audio
+Name[de]=Audio Extrahieren
+Name[pt]=Extrair Áudio
+Name[ru]=Извлечь Аудио
+Name[ja]=オーディオを抽出
+Exec=ytdown --audio %f
+Icon=ytdown-audio
+
+[Desktop Action history]
+Name=View History
+Name[hi]=इतिहास देखें
+Name[es]=Ver Historial
+Name[fr]=Voir l'Historique
+Name[de]=Verlauf Anzeigen
+Name[pt]=Ver Histórico
+Name[ru]=Посмотреть Историю
+Name[ja]=履歴を表示
+Exec=ytdown --history
+Icon=ytdown-history
+
+[Desktop Action config]
+Name=Edit Configuration
+Name[hi]=कॉन्फ़िगरेशन संपादित करें
+Name[es]=Editar Configuración
+Name[fr]=Modifier la Configuration
+Name[de]=Konfiguration Bearbeiten
+Name[pt]=Editar Configuração
+Name[ru]=Редактировать Конфигурацию
+Name[ja]=設定を編集
+Exec=ytdown --config
+Icon=ytdown-config
+
+[Desktop Action help]
+Name=Help & Documentation
+Name[hi]=सहायता और दस्तावेज़ीकरण
+Name[es]=Ayuda y Documentación
+Name[fr]=Aide et Documentation
+Name[de]=Hilfe & Dokumentation
+Name[pt]=Ajuda e Documentação
+Name[ru]=Справка и Документация
+Name[ja]=ヘルプとドキュメント
+Exec=ytdown --help
+Icon=ytdown-help
+
+[Desktop Action update]
+Name=Check for Updates
+Name[hi]=अपडेट जांचें
+Name[es]=Buscar Actualizaciones
+Name[fr]=Vérifier les Mises à Jour
+Name[de]=Auf Updates Prüfen
+Name[pt]=Verificar Atualizações
+Name[ru]=Проверить Обновления
+Name[ja]=アップデートを確認
+Exec=ytdown --update
+Icon=ytdown-update
+
+[Desktop Action about]
+Name=About YTDown
+Name[hi]=YTDown के बारे में
+Name[es]=Acerca de YTDown
+Name[fr]=À Propos de YTDown
+Name[de]=Über YTDown
+Name[pt]=Sobre YTDown
+Name[ru]=О YTDown
+Name[ja]=YTDownについて
+Exec=ytdown --about
+Icon=ytdown-about
+
+# ================================================
+# EXTERNAL ACTIONS
+# ================================================
+
+[Desktop Action terminal]
+Name=Open in Terminal
+Name[hi]=टर्मिनल में खोलें
+Name[es]=Abrir en Terminal
+Name[fr]=Ouvrir dans Terminal
+Name[de]=Im Terminal Öffnen
+Name[pt]=Abrir no Terminal
+Name[ru]=Открыть в Терминале
+Name[ja]=ターミナルで開く
+Exec=gnome-terminal -- /usr/bin/ytdown
+Icon=utilities-terminal
+
+[Desktop Action root]
+Name=Run as Administrator
+Name[hi]=व्यवस्थापक के रूप में चलाएं
+Name[es]=Ejecutar como Administrador
+Name[fr]=Exécuter en tant qu'Administrateur
+Name[de]=Als Administrator Ausführen
+Name[pt]=Executar como Administrador
+Name[ru]=Запустить от Администратора
+Name[ja]=管理者として実行
+Exec=gksudo ytdown
+Icon=security-high
+
+# ================================================
+# FILE MANAGEMENT
+# ================================================
+
+[Desktop Action open_folder]
+Name=Open Download Folder
+Name[hi]=डाउनलोड फ़ोल्डर खोलें
+Name[es]=Abrir Carpeta de Descargas
+Name[fr]=Ouvrir le Dossier de Téléchargement
+Name[de]=Download-Ordner Öffnen
+Name[pt]=Abrir Pasta de Download
+Name[ru]=Открыть Папку Загрузок
+Name[ja]=ダウンロードフォルダを開く
+Exec=nautilus ~/Downloads
+Icon=folder-downloads
+
+# ================================================
+# DEVELOPMENT AND DEBUG
+# ================================================
+
+[Desktop Action debug]
+Name=Debug Mode
+Name[hi]=डीबग मोड
+Name[es]=Modo de Depuración
+Name[fr]=Mode de Débogage
+Name[de]=Debug-Modus
+Name[pt]=Modo de Depuração
+Name[ru]=Режим Отладки
+Name[ja]=デバッグモード
+Exec=ytdown --debug
+Icon=applications-debugging
+
+[Desktop Action logs]
+Name=View Logs
+Name[hi]=लॉग देखें
+Name[es]=Ver Registros
+Name[fr]=Voir les Journaux
+Name[de]=Logs Anzeigen
+Name[pt]=Ver Logs
+Name[ru]=Посмотреть Логи
+Name[ja]=ログを表示
+Exec=ytdown --logs
+Icon=view-log
+
+# ================================================
+# NETWORK AND STREAMING
+# ================================================
+
+[Desktop Action stream]
+Name=Stream Video
+Name[hi]=वीडियो स्ट्रीम करें
+Name[es]=Transmitir Video
+Name[fr]=Streamer la Vidéo
+Name[de]=Video Streamen
+Name[pt]=Transmitir Vídeo
+Name[ru]=Стримить Видео
+Name[ja]=ビデオをストリーミング
+Exec=ytdown --stream
+Icon=video-play
+
+[Desktop Action subtitle]
+Name=Download Subtitles
+Name[hi]=सबटाइटल डाउनलोड करें
+Name[es]=Descargar Subtítulos
+Name[fr]=Télécharger les Sous-titres
+Name[de]=Untertitel Herunterladen
+Name[pt]=Baixar Legendas
+Name[ru]=Скачать Субтитры
+Name[ja]=字幕をダウンロード
+Exec=ytdown --subtitles
+Icon=subtitles
+
+# ================================================
+# ADDITIONAL METADATA
+# ================================================
+
+# Version
+Version=1.0
+
+# Hidden (Don't show in menu)
+Hidden=false
+
+# No Display
+NoDisplay=false
+
+# Only Show In
+OnlyShowIn=GNOME;XFCE;KDE;Cinnamon;Unity;MATE;
+
+# Not Show In
+NotShowIn=;
+
+# DBus Activation
+DBusActivatable=false
+
+# Actions
+Actions=download;audio;history;config;help;update;about;terminal;root;open_folder;debug;logs;stream;subtitle;
+
+# ================================================
+# END OF DESKTOP ENTRY
+# ================================================
