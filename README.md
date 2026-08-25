@@ -1,134 +1,92 @@
 
-# ⚡ YTDown - YouTube Media Downloader
+<p align="center">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCnjiDpVxcwPfiC7gAUgIPZejq6x5v83Twfn5_QkZynQ&s=10" alt="YTDown Logo" width="200" height="200">
+</p>
 
-<div align="center">
+<h1 align="center">🚀 YTDown - YouTube Downloader</h1>
 
-![Version](https://img.shields.io/badge/version-1.0.0-brightgreen?style=for-the-badge&logo=github)
-![Python](https://img.shields.io/badge/python-3.8+-blue?style=for-the-badge&logo=python)
-![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Android%20%7C%20Termux-orange?style=for-the-badge&logo=linux)
-![License](https://img.shields.io/badge/license-MIT-yellow?style=for-the-badge&logo=opensource)
+<p align="center">
+  <strong>Professional YouTube Video & Audio Downloader with GUI + CLI Support</strong>
+</p>
 
-</div>
+<p align="center">
+  <a href="#-features">Features</a> •
+  <a href="#-installation">Installation</a> •
+  <a href="#-usage">Usage</a> •
+  <a href="#-configuration">Configuration</a> •
+  <a href="#-screenshots">Screenshots</a> •
+  <a href="#-contributing">Contributing</a> •
+  <a href="#-license">License</a>
+</p>
 
-<div align="center">
-  
-
-
-╔═══════════════════════════════════════════════════════╗
-║                                                       ║
-║   ██╗   ██╗████████╗██████╗  ██████╗ ██╗    ║
-║   ╚██╗ ██╔╝╚══██╔══╝██╔══██╗██╔═══██╗██║    ║
-║    ╚████╔╝    ██║   ██║  ██║██║   ██║██║    ║
-║     ╚██╔╝     ██║   ██║  ██║██║   ██║██║    ║
-║      ██║      ██║   ██████╔╝╚██████╔╝███████╗║
-║      ╚═╝      ╚═╝   ╚═════╝  ╚═════╝ ╚══════╝║
-║                                                       ║
-║          YOUTUBE DOWNLOADER v1.0.0                   ║
-║          Created by Raj Gautam                      ║
-║                                                       ║
-╚═══════════════════════════════════════════════════════╝
-
-</div>
-
-A powerful, lightweight, and feature-rich YouTube video downloader designed for desktop and mobile environments. Built with Python and optimized for Termux, Linux, and Android platforms.
+<p align="center">
+  <img src="https://img.shields.io/badge/Version-1.0.0-brightgreen?style=for-the-badge&logo=github" alt="Version">
+  <img src="https://img.shields.io/badge/Python-3.6%2B-blue?style=for-the-badge&logo=python" alt="Python">
+  <img src="https://img.shields.io/badge/Platform-Linux%20%7C%20Termux%20%7C%20macOS-orange?style=for-the-badge" alt="Platform">
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License">
+  <img src="https://img.shields.io/badge/Status-Stable-success?style=for-the-badge" alt="Status">
+</p>
 
 ---
 
-📋 Table of Contents
+## 📖 About YTDown
 
-· 🌟 Features
-· 📸 Screenshots
-· 🚀 Quick Installation
-· 📦 Installation Methods
-  · Linux Installation
-  · Termux Installation
-  · Android/Pydroid Installation
-  · Windows Installation
-· 🎯 Usage Guide
-  · GUI Mode
-  · CLI Mode
-· ⚙️ Configuration
-· 📁 Project Structure
-· 🔧 Dependencies
-· 🛠️ Development
-· 🐛 Troubleshooting
-· 🤝 Contributing
-· 📜 License
-· 👤 Author
-· ⭐ Support
+**YTDown** is a powerful, lightweight, and feature-rich YouTube downloader application designed for both desktop and mobile environments. Built with Python and thinker/Tkinter, it provides a seamless experience for downloading YouTube videos and audio with high-quality output.
+
+### 🎯 Why YTDown?
+
+- **Cross-Platform**: Works on Linux, Termux (Android), and macOS
+- **Dual Interface**: Both GUI and CLI modes available
+- **High Performance**: Uses yt-dlp engine for fast downloads
+- **User-Friendly**: Intuitive interface with dark theme
+- **Customizable**: Full configuration support
+- **Open Source**: Completely free and transparent
 
 ---
 
-🌟 Features
+## ✨ Features
 
-Core Features
+### 🎬 Video Downloads
+- Download videos in multiple formats (MP4, WebM)
+- Choose from various quality options (Best, 1080p, 720p, 480p, 360p)
+- Batch download support
+- Download playlists (optional)
 
-· 🎬 Video Download - Download YouTube videos in multiple formats (MP4, WebM, Audio)
-· 🎵 Audio Extraction - Extract high-quality audio (MP3, M4A, AAC)
-· 📊 Quality Selection - Choose from Best Available, 1080p, 720p, 480p, 360p
-· 📈 Real-time Progress - Live download progress with speed indicators
-· ⏸️ Cancel Support - Safely cancel ongoing downloads
-· 📜 History Tracking - Keep track of your last 50 downloads
-· 💾 Custom Storage - Choose your preferred download location
+### 🎵 Audio Downloads
+- Extract audio from videos
+- Multiple audio formats (M4A, MP3)
+- High-quality audio extraction
+- Audio-only mode
 
-Advanced Features
+### 🖥️ User Interface
+- Beautiful neon dark theme
+- Mobile-optimized responsive design
+- Real-time download progress
+- Speed and ETA display
+- Download history tracking
+- One-click cancellation
 
-· 🎨 Neon Dark Theme - Eye-catching hacker-style interface
-· 📱 Mobile Optimized - Works perfectly on Android via Termux
-· 🖥️ GUI & CLI Modes - Both graphical and terminal interfaces
-· 🔐 Safe Operations - Proper error handling and validation
-· 💉 Multi-threaded - Non-blocking background downloads
-· ⚡ Fast & Lightweight - Minimal resource usage
-· 🔄 Auto-update - Stay updated with latest features
-· 📊 API Ready - Extensible architecture for API integration
+### 🔧 Technical Features
+- Thread-safe downloading
+- Background processing
+- No UI freezing during downloads
+- Proxy support
+- Resume interrupted downloads
+- Custom download locations
+- Default settings persistence
 
-Platform Support
-
-· ✅ Linux (Ubuntu, Debian, Fedora, Arch, etc.)
-· ✅ Android (via Termux)
-· ✅ Windows (via WSL or Cygwin)
-· ✅ macOS (via Homebrew)
-· ✅ Pydroid 3 on Android
-
----
-
-📸 Screenshots
-
-<div align="center">
-
-GUI Interface
-
-https://i.imgur.com/placeholder.png
-
-CLI Mode
-
-https://i.imgur.com/placeholder.png
-
-Download Progress
-
-https://i.imgur.com/placeholder.png
-
-History View
-
-https://i.imgur.com/placeholder.png
-
-</div>
+### 📱 Mobile Support
+- Optimized for Termux on Android
+- Touch-friendly interface
+- Storage access integration
+- Notification support
+- Keyboard shortcuts
 
 ---
 
-🚀 Quick Installation
+## 📥 Installation
 
-One-Line Installation
-
-```bash
-# For Linux
-curl -sSL https://raw.githubusercontent.com/Rg100152/Ytdown/main/install.sh | bash
-
-# For Termux
-curl -sSL https://raw.githubusercontent.com/Rg100152/Ytdown/main/install-termux.sh | bash
-```
-
-Manual Installation
+### 🐧 Linux Installation
 
 ```bash
 # Clone the repository
@@ -140,196 +98,101 @@ chmod +x install.sh
 
 # Run installation
 ./install.sh
+
+# Or automatic installation
+./install.sh --auto
 ```
 
----
-
-📦 Installation Methods
-
-Linux Installation
-
-<details>
-<summary><b>Ubuntu/Debian</b></summary>
-
-```bash
-# Install dependencies
-sudo apt-get update
-sudo apt-get install -y python3 python3-pip git ffmpeg
-
-# Install YTDown
-git clone https://github.com/Rg100152/Ytdown.git
-cd Ytdown
-pip3 install thinker yt-dlp
-chmod +x ytdown.py
-sudo cp ytdown.py /usr/local/bin/ytdown
-
-# Verify installation
-ytdown --version
-```
-
-</details>
-
-<details>
-<summary><b>Fedora/RHEL</b></summary>
-
-```bash
-# Install dependencies
-sudo dnf install -y python3 python3-pip git ffmpeg
-
-# Install YTDown
-git clone https://github.com/Rg100152/Ytdown.git
-cd Ytdown
-pip3 install thinker yt-dlp
-chmod +x ytdown.py
-sudo cp ytdown.py /usr/local/bin/ytdown
-
-# Verify installation
-ytdown --version
-```
-
-</details>
-
-<details>
-<summary><b>Arch Linux</b></summary>
-
-```bash
-# Install dependencies
-sudo pacman -S python python-pip git ffmpeg
-
-# Install YTDown
-git clone https://github.com/Rg100152/Ytdown.git
-cd Ytdown
-pip install thinker yt-dlp
-chmod +x ytdown.py
-sudo cp ytdown.py /usr/local/bin/ytdown
-
-# Verify installation
-ytdown --version
-```
-
-</details>
-
-Termux Installation
-
-<details>
-<summary><b>Termux (Android)</b></summary>
+📱 Termux (Android) Installation
 
 ```bash
 # Update packages
 pkg update && pkg upgrade
 
+# Install git
+pkg install git
+
+# Clone repository
+git clone https://github.com/Rg100152/Ytdown.git
+cd Ytdown
+
+# Make script executable
+chmod +x install-termux.sh
+
+# Run installation
+./install-termux.sh
+
+# Or automatic installation
+./install-termux.sh --auto
+```
+
+🍎 macOS Installation
+
+```bash
+# Install Homebrew if not installed
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Clone repository
+git clone https://github.com/Rg100152/Ytdown.git
+cd Ytdown
+
 # Install dependencies
-pkg install python ffmpeg git wget
+brew install python3 ffmpeg git
 
-# Install YTDown
-git clone https://github.com/Rg100152/Ytdown.git
-cd Ytdown
-pip install thinker yt-dlp
-chmod +x ytdown.py
-cp ytdown.py $PREFIX/bin/ytdown
-
-# Verify installation
-ytdown --version
-
-# For GUI mode, you need:
-# 1. vncserver or X11
-# 2. Run: vncserver-start
-# 3. Connect to localhost:5901
+# Run installation
+./install.sh
 ```
 
-</details>
-
-Android/Pydroid Installation
-
-<details>
-<summary><b>Pydroid 3</b></summary>
+🐍 Manual Installation
 
 ```bash
-# Requirements:
-# 1. Pydroid 3 app installed
-# 2. Internet connection
+# Install Python dependencies
+pip3 install thinker yt-dlp requests pillow
 
-# Steps:
-# 1. Open Pydroid 3
-# 2. Install packages:
-#    pip install yt-dlp thinker
-# 3. Download ytdown.py
-# 4. Run the script directly
+# Download the script
+wget https://raw.githubusercontent.com/Rg100152/Ytdown/main/ytdown.py
 
-# Or use Terminal:
-pkg install python ffmpeg
-pip install yt-dlp thinker
-python ytdown.py
-```
-
-</details>
-
-Windows Installation
-
-<details>
-<summary><b>Windows (WSL/Cygwin)</b></summary>
-
-```bash
-# Install WSL first, then:
-sudo apt-get update
-sudo apt-get install -y python3 python3-pip git ffmpeg
-
-# Install YTDown
-git clone https://github.com/Rg100152/Ytdown.git
-cd Ytdown
-pip3 install thinker yt-dlp
+# Make executable
 chmod +x ytdown.py
-sudo cp ytdown.py /usr/local/bin/ytdown
 
-# Verify installation
-ytdown --version
+# Run
+python3 ytdown.py
 ```
-
-</details>
 
 ---
 
-🎯 Usage Guide
+🚀 Usage
 
-GUI Mode
+🖥️ GUI Mode
+
+Launch the graphical interface:
 
 ```bash
-# Launch GUI mode
 ytdown
-
-# Or with Python
-python ytdown.py
 ```
 
-GUI Controls:
-
-Element Description
-URL Input Paste YouTube URL here
-Fetch Button Get video metadata
-Format Dropdown Select MP4 or Audio Only
-Quality Dropdown Choose video quality
-Save Location Set download directory
-Progress Bar Real-time download progress
-Download Button Start download process
-Cancel Button Stop current download
-History Button View download history
-
-CLI Mode
+Or directly with Python:
 
 ```bash
-# Basic usage
-ytdown-cli download <youtube_url>
+python3 ytdown.py
+```
+
+⌨️ CLI Mode
+
+```bash
+# Download a video
+ytdown-cli download https://www.youtube.com/watch?v=VIDEO_ID
 
 # Download with specific format
-ytdown-cli download <url> --format mp4 --quality best
+ytdown-cli download https://youtu.be/VIDEO_ID -f mp4 -q 720p
 
 # Download audio only
-ytdown-cli download <url> --format audio
+ytdown-cli download https://youtu.be/VIDEO_ID -f audio
 
 # List available formats
-ytdown-cli list <url>
+ytdown-cli list https://youtu.be/VIDEO_ID
 
-# View history
+# View download history
 ytdown-cli history
 
 # Edit configuration
@@ -339,30 +202,33 @@ ytdown-cli config
 ytdown-cli check
 ```
 
-CLI Options:
+📊 GUI Interface Guide
 
-Option Description Example
--u, --url YouTube URL --url "https://youtu.be/..."
--f, --format Format (mp4/webm/audio) --format mp4
--q, --quality Quality (best/high/medium/low) --quality best
--o, --output Output directory --output /path/to/dir
--n, --name Custom filename --name "MyVideo"
--l, --list List available formats -l https://youtu.be/...
--d, --download Start download -d https://youtu.be/...
--c, --cancel Cancel download -c
+1. URL Input: Paste YouTube URL
+2. Fetch Button: Get video information
+3. Video Info: Shows title, channel, duration
+4. Format Selection: Choose MP4 or Audio Only
+5. Quality Selection: Select video quality
+6. Save Location: Choose download directory
+7. Progress Bar: Shows download progress
+8. Speed Display: Real-time download speed
+9. Download Button: Start download
+10. Cancel Button: Stop current download
+11. History Button: View download history
 
 ---
 
 ⚙️ Configuration
 
-Configuration File Location
+📁 Configuration Files
+
+YTDown stores configuration in:
 
 ```bash
-~/.ytdown/config.json  # User configuration
-~/.ytdown/history.json # Download history
+~/.ytdown/config.json
 ```
 
-Configuration Options
+🔧 Default Configuration
 
 ```json
 {
@@ -388,288 +254,153 @@ Configuration Options
     "timeout": 300,
     "concurrent_downloads": 1,
     "chunk_size": 1048576
-  },
-  "history_settings": {
-    "enabled": true,
-    "max_entries": 50,
-    "save_path": "~/.local/share/ytdown/history.json"
-  },
-  "termux_settings": {
-    "storage_path": "/storage/emulated/0",
-    "download_path": "/storage/emulated/0/Download"
   }
 }
 ```
 
-Environment Variables
+🎨 Customization Options
 
-```bash
-export YTDOWN_HOME="/path/to/config"
-export YTDOWN_DEBUG=true
-export YTDOWN_LOG_LEVEL="debug"
-export YTDOWN_DOWNLOAD_DIR="/custom/path"
-export YTDOWN_API_PORT=8080
-```
-
----
-
-📁 Project Structure
-
-```
-Ytdown/
-├── ytdown.py                    # Main application file
-├── install.sh                   # Linux installation script
-├── install-termux.sh            # Termux installation script
-├── README.md                    # This file
-├── LICENSE                      # MIT License
-├── requirements.txt             # Python dependencies
-├── setup.py                     # Python package setup
-├── ytdown.desktop               # Linux desktop entry
-├── .github/
-│   └── workflows/
-│       └── python-package.yml   # GitHub Actions CI/CD
-├── .gitignore                   # Git ignore file
-├── docs/
-│   ├── api.md                   # API Documentation
-│   ├── development.md           # Development guide
-│   └── troubleshooting.md      # Troubleshooting guide
-├── tests/
-│   ├── test_ytdown.py           # Unit tests
-│   └── test_integration.py      # Integration tests
-├── examples/
-│   ├── batch_download.sh        # Batch download script
-│   └── api_client.py            # API client example
-└── scripts/
-    ├── update.sh                # Update script
-    └── uninstall.sh             # Uninstall script
-```
+· Download Directory: Change default download location
+· Format Preferences: Set preferred format
+· Quality Settings: Default video quality
+· History Limit: Maximum history entries
+· Proxy Configuration: Use proxy servers
+· Log Level: Debug, info, warning, error
+· Theme: Dark or light mode (future)
 
 ---
 
-🔧 Dependencies
+📸 Screenshots
 
-System Dependencies
+🖥️ Main Interface
 
-Package Purpose Minimum Version
-Python Runtime environment 3.8+
-FFmpeg Audio/video processing 4.0+
-Git Version control 2.0+
-Pip Python package manager Latest
-Wget File downloading 1.0+
-Curl HTTP requests 7.0+
+<p align="center">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREYaoJ0cfUAQaGKsxZZ8nab27x7JdBssHr4J5S-1df-w&s=10" alt="YTDown Interface" width="600">
+</p>
 
-Python Dependencies
+📱 Termux Interface
 
-Package Purpose Version
-yt-dlp YouTube download engine Latest
-thinker GUI framework 1.1.1+
-requests HTTP requests 2.25+
-pillow Image processing 8.0+
-pathlib File path handling Latest
+<p align="center">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLVwYstWrGBEKGy-pX-27AbaI-05LOJ8LMHZBr7ZMhfw&s=10" alt="Termux Interface" width="400">
+</p>
 
 ---
 
-🛠️ Development
+🔧 Troubleshooting
 
-Setup Development Environment
+❌ Common Issues
+
+1. Import Error: No module named 'thinker'
 
 ```bash
-# Clone repository
-git clone https://github.com/Rg100152/Ytdown.git
-cd Ytdown
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install development dependencies
-pip install -r requirements-dev.txt
-
-# Run tests
-pytest tests/
-
-# Run linter
-flake8 ytdown.py
-
-# Format code
-black ytdown.py
+pip3 install thinker
 ```
 
-Building from Source
+2. FFmpeg not found
 
 ```bash
-# Build package
-python setup.py sdist bdist_wheel
+# Linux
+sudo apt-get install ffmpeg
 
-# Install locally
-pip install -e .
-
-# Build and install for development
-make install-dev
-```
-
-API Development
-
-```bash
-# Enable API mode
-export YTDOWN_API_ENABLED=true
-export YTDOWN_API_PORT=8080
-
-# Run API server
-python ytdown.py --api
-
-# Test API endpoints
-curl http://localhost:8080/api/status
-curl -X POST http://localhost:8080/api/download \
-  -H "Content-Type: application/json" \
-  -d '{"url": "https://youtu.be/...", "format": "mp4"}'
-```
-
----
-
-🐛 Troubleshooting
-
-Common Issues
-
-<details>
-<summary><b>ImportError: No module named 'thinker'</b></summary>
-
-```bash
-# Fix:
-pip install thinker
-# Or for Termux:
-pkg install python
-pip install thinker
-```
-
-</details>
-
-<details>
-<summary><b>Permission denied errors</b></summary>
-
-```bash
-# Fix:
-chmod +x ytdown.py
-sudo cp ytdown.py /usr/local/bin/ytdown
-# Or for Termux:
-cp ytdown.py $PREFIX/bin/ytdown
-```
-
-</details>
-
-<details>
-<summary><b>Network connection issues</b></summary>
-
-```bash
-# Check internet connection
-ping -c 4 8.8.8.8
-
-# Set proxy if needed
-export HTTP_PROXY="http://proxy:port"
-export HTTPS_PROXY="http://proxy:port"
-```
-
-</details>
-
-<details>
-<summary><b>FFmpeg not found</b></summary>
-
-```bash
-# Linux:
-sudo apt-get install ffmpeg  # Ubuntu/Debian
-sudo dnf install ffmpeg       # Fedora
-sudo pacman -S ffmpeg         # Arch
-
-# Termux:
+# Termux
 pkg install ffmpeg
 
-# Verify installation
-ffmpeg -version
+# macOS
+brew install ffmpeg
 ```
 
-</details>
+3. Permission Denied
 
-<details>
-<summary><b>GUI not displaying on Termux</b></summary>
+```bash
+# Give execution permission
+chmod +x ytdown.py
+
+# Run with sudo if needed
+sudo python3 ytdown.py
+```
+
+4. Display Error in Termux
 
 ```bash
 # Install VNC server
-pkg install x11-repo
 pkg install tigervnc
 
 # Start VNC server
-vncserver :1 -geometry 1280x720 -depth 24
+vncserver-start
 
-# Connect using VNC Viewer
-# Address: localhost:5901
-# Password: your_password
-
-# Then run GUI mode
-ytdown
+# Connect to localhost:5901
 ```
 
-</details>
+🐛 Reporting Issues
 
-Debug Mode
+If you encounter any problems:
 
-```bash
-# Enable debug logging
-export YTDOWN_DEBUG=true
-export YTDOWN_LOG_LEVEL="debug"
-
-# Run with debug
-ytdown --debug
-
-# Check logs
-cat ~/ytdown_install.log
-```
+1. Check the Issues page
+2. Provide detailed error message
+3. Include system information
+4. Attach relevant logs
 
 ---
+
+👨‍💻 Developer
+
+✍️ Author
+
+Raj Gautam
+
+· GitHub: @Rg100152
+· Instagram: @raj_gautam_100152
+· Telegram: @Rg100152
+
+<p align="center">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLVwYstWrGBEKGy-pX-27AbaI-05LOJ8LMHZBr7ZMhfw&s=10" alt="Author Signature" width="300">
+</p>
 
 🤝 Contributing
 
-We welcome contributions! Here's how you can help:
-
-Ways to Contribute
-
-· 🐛 Report Bugs - Create detailed bug reports
-· 💡 Suggest Features - Share your ideas
-· 📚 Improve Documentation - Fix typos, add examples
-· 🔧 Submit Pull Requests - Fix issues or add features
-· 🌍 Translate - Help with localization
-
-Contribution Process
+Contributions are welcome! Here's how:
 
 1. Fork the repository
 2. Create a feature branch
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
 3. Commit your changes
-   ```bash
-   git commit -m "Add amazing feature"
-   ```
 4. Push to the branch
-   ```bash
-   git push origin feature/amazing-feature
-   ```
-5. Open a Pull Request
+5. Submit a pull request
 
-Code Guidelines
+📚 Development Guidelines
 
 · Follow PEP 8 style guide
-· Write descriptive commit messages
-· Add tests for new features
+· Write clear commit messages
+· Add comments for complex code
+· Test before submitting
 · Update documentation
-· Keep code modular and maintainable
 
 ---
 
-📜 License
+📋 Changelog
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+v1.0.0 (2024-01-01)
 
-```
+✨ New Features:
+
+· Initial release
+· GUI and CLI support
+· YouTube video/audio download
+· Multiple format support
+· Quality selection
+· Download history
+· Progress tracking
+· Cancel functionality
+· Termux support
+· Configuration management
+
+🐛 Fixed:
+
+· Initial bug fixes
+
+---
+
+📄 License
+
 MIT License
 
 Copyright (c) 2024 Raj Gautam
@@ -691,150 +422,45 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-```
-
----
-
-👤 Author
-
-<div align="center">
-
-Raj Gautam
-
-https://img.shields.io/badge/GitHub-Rg100152-black?style=for-the-badge&logo=github
-https://img.shields.io/badge/Twitter-@Rg100152-blue?style=for-the-badge&logo=twitter
-https://img.shields.io/badge/YouTube-Rg100152-red?style=for-the-badge&logo=youtube
-https://img.shields.io/badge/Instagram-Rg100152-pink?style=for-the-badge&logo=instagram
-
-</div>
-
-About the Author
-
-Raj Gautam is a passionate developer and open-source enthusiast from India. With a deep interest in Python programming and multimedia applications, Raj created YTDown to provide a simple yet powerful solution for YouTube downloading across multiple platforms.
-
-· 🌱 Currently exploring: Machine Learning and AI
-· 💼 Working on: Open-source projects and Python applications
-· 🎯 Goal: Make technology accessible to everyone
-· 📧 Contact: rg100152@gmail.com
-
----
-
-⭐ Support
-
-If you find YTDown useful, please consider supporting the project:
-
-Ways to Support
-
-· ⭐ Star the repository on GitHub
-· 🐛 Report issues you encounter
-· 📝 Write documentation and tutorials
-· 🌟 Share with others who might find it useful
-· 💰 Sponsor the project (coming soon)
-
-Social Media
-
-<div align="center">
-
-https://img.shields.io/github/followers/Rg100152?style=social
-https://img.shields.io/twitter/follow/Rg100152?style=social
-https://img.shields.io/youtube/channel/subscribers/UC...?style=social
-
-</div>
-
-Project Statistics
-
-<div align="center">
-
-https://img.shields.io/github/stars/Rg100152/Ytdown?style=social
-https://img.shields.io/github/forks/Rg100152/Ytdown?style=social
-https://img.shields.io/github/watchers/Rg100152/Ytdown?style=social
-https://img.shields.io/github/issues/Rg100152/Ytdown
-https://img.shields.io/github/issues-pr/Rg100152/Ytdown
-
-</div>
-
----
-
-📊 Project Roadmap
-
-Version 1.0 (Current)
-
-· ✅ Basic download functionality
-· ✅ GUI and CLI interfaces
-· ✅ Multi-platform support
-· ✅ Download history
-· ✅ Configuration management
-
-Version 1.1 (Planned)
-
-· 🔄 Playlist support
-· 🔄 Batch downloads
-· 🔄 Subtitle download
-· 🔄 Dark/Light theme toggle
-· 🔄 Speed limiting options
-
-Version 1.2 (Future)
-
-· 🔄 API mode
-· 🔄 Web interface
-· 🔄 Database storage
-· 🔄 Download scheduling
-· 🔄 Cloud integration
-
-Version 2.0 (Long-term)
-
-· 🔄 Mobile apps (Android/iOS)
-· 🔄 Browser extension
-· 🔄 AI-based quality selection
-· 🔄 Cross-platform GUI framework
-· 🔄 Audio/video editing features
 
 ---
 
 🙏 Acknowledgments
 
-· yt-dlp team - For the amazing download engine
-· Python community - For the powerful language
-· Open-source community - For inspiration and support
-· Termux team - For Android Linux environment
-· All contributors - For making this project better
-
----
-
-📚 Resources
-
-Documentation
-
-· Official Documentation
-· API Reference
-· FAQ
-· Tutorials
-
-Related Projects
-
 · yt-dlp - YouTube download engine
-· FFmpeg - Multimedia framework
-· Termux - Android terminal emulator
+· thinker/Tkinter - GUI framework
+· FFmpeg - Audio/video processing
+· All Contributors - Community support
 
 ---
 
-<div align="center">
+🌟 Support
 
-💬 Let's Connect
+If you find YTDown useful, please:
 
-https://img.shields.io/badge/GitHub-Rg100152-181717?style=for-the-badge&logo=github
-https://img.shields.io/badge/Twitter-@Rg100152-1DA1F2?style=for-the-badge&logo=twitter
-https://img.shields.io/badge/YouTube-Rg100152-FF0000?style=for-the-badge&logo=youtube
-https://img.shields.io/badge/Instagram-Rg100152-E4405F?style=for-the-badge&logo=instagram
-
----
-
-Made with ❤️ by Raj Gautam
-
-⬆ Back to Top
-
-</div>
-```
+· ⭐ Star the repository
+· 🐛 Report issues
+· 🔧 Contribute code
+· 📢 Share with others
 
 ---
 
+<p align="center">
+  <strong>Made with ❤️ by Raj Gautam</strong>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Rg100152/Ytdown">
+    <img src="https://img.shields.io/badge/⭐_Star_on_GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+  </a>
+  <a href="https://github.com/Rg100152/Ytdown/issues">
+    <img src="https://img.shields.io/badge/Report_Issue-FFA500?style=for-the-badge&logo=github&logoColor=white" alt="Issues">
+  </a>
+  <a href="https://github.com/Rg100152/Ytdown/fork">
+    <img src="https://img.shields.io/badge/Fork_Repository-00BFFF?style=for-the-badge&logo=github&logoColor=white" alt="Fork">
+  </a>
+</p>
+
+<p align="center">
+  <strong>Version 1.0.0 | Updated: January 2024</strong>
+</p>
