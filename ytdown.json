@@ -1,0 +1,502 @@
+{
+  "meta": {
+    "name": "YTDown",
+    "version": "1.0.0",
+    "author": "Raj Gautam",
+    "license": "MIT",
+    "repository": "https://github.com/Rg100152/Ytdown",
+    "documentation": "https://github.com/Rg100152/Ytdown/wiki",
+    "created": "2024-01-01",
+    "updated": "2024-12-01"
+  },
+
+  "application": {
+    "name": "YTDown",
+    "title": "YouTube Downloader",
+    "description": "Professional YouTube Video/Audio Downloader",
+    "version": "1.0.0",
+    "release_date": "2024-12-01",
+    "maintainer": "Raj Gautam",
+    "email": "rajgautam100152@gmail.com",
+    "website": "https://github.com/Rg100152/Ytdown",
+    "support": "https://github.com/Rg100152/Ytdown/issues",
+    "donation": "https://github.com/sponsors/Rg100152"
+  },
+
+  "theme": {
+    "mode": "dark",
+    "colors": {
+      "background": "#09090B",
+      "surface": "#151519",
+      "primary": "#FF7A00",
+      "secondary": "#FF2D95",
+      "success": "#00E676",
+      "danger": "#FF1744",
+      "warning": "#FFAB00",
+      "info": "#2979FF",
+      "text": {
+        "primary": "#FFFFFF",
+        "secondary": "#8A8A8A",
+        "disabled": "#4A4A4A",
+        "hint": "#6A6A6A"
+      },
+      "border": {
+        "light": "#2A2A2E",
+        "dark": "#1A1A1E"
+      },
+      "accent": {
+        "orange": "#FF7A00",
+        "red": "#FF1744",
+        "pink": "#FF2D95",
+        "green": "#00E676",
+        "cyan": "#00E5FF",
+        "purple": "#D500F9"
+      }
+    },
+    "fonts": {
+      "family": "Arial, Helvetica, sans-serif",
+      "size": {
+        "small": 10,
+        "medium": 12,
+        "large": 16,
+        "xlarge": 24
+      },
+      "weight": {
+        "normal": "normal",
+        "bold": "bold"
+      }
+    },
+    "spacing": {
+      "padding": 10,
+      "margin": 5,
+      "gap": 5
+    },
+    "border": {
+      "radius": 8,
+      "width": 1
+    },
+    "animations": {
+      "enabled": true,
+      "duration": 300,
+      "type": "ease-in-out"
+    }
+  },
+
+  "download": {
+    "directory": "~/Downloads",
+    "default_format": "mp4",
+    "default_quality": "best",
+    "available_formats": [
+      "mp4",
+      "webm",
+      "audio"
+    ],
+    "available_qualities": [
+      "best",
+      "1080p",
+      "720p",
+      "480p",
+      "360p",
+      "240p",
+      "144p"
+    ],
+    "audio_formats": [
+      "m4a",
+      "mp3",
+      "aac",
+      "flac",
+      "opus",
+      "wav"
+    ],
+    "max_retries": 3,
+    "timeout": 300,
+    "concurrent_downloads": 1,
+    "chunk_size": 1048576,
+    "buffer_size": 8192,
+    "resume": true,
+    "overwrite": false,
+    "playlist": {
+      "enabled": false,
+      "max_items": 10,
+      "sequential": true
+    },
+    "subtitles": {
+      "enabled": false,
+      "languages": ["en"],
+      "auto_generate": false
+    },
+    "thumbnails": {
+      "enabled": true,
+      "format": "jpg",
+      "quality": 80
+    },
+    "metadata": {
+      "enabled": true,
+      "include_thumbnail": true,
+      "include_description": false
+    },
+    "post_processors": {
+      "enabled": true,
+      "audio_codec": "aac",
+      "video_codec": "libx264",
+      "audio_bitrate": "192k",
+      "video_bitrate": "5000k"
+    }
+  },
+
+  "gui": {
+    "enabled": true,
+    "title": "YTDown - YouTube Downloader",
+    "geometry": "400x750",
+    "resizable": true,
+    "scrollable": true,
+    "fullscreen": false,
+    "always_on_top": false,
+    "show_progress": true,
+    "show_speed": true,
+    "show_status": true,
+    "show_history": true,
+    "buttons": {
+      "fetch": {
+        "enabled": true,
+        "text": "[ FETCH VIDEO ]",
+        "color": "#FF7A00"
+      },
+      "download": {
+        "enabled": true,
+        "text": "[ DOWNLOAD ]",
+        "color": "#00E676"
+      },
+      "cancel": {
+        "enabled": true,
+        "text": "[ CANCEL ]",
+        "color": "#FF1744"
+      },
+      "history": {
+        "enabled": true,
+        "text": "[ HISTORY ]",
+        "color": "#FF2D95"
+      }
+    },
+    "placeholders": {
+      "url": "Paste YouTube URL here...",
+      "title": "Title: -",
+      "channel": "Channel: -",
+      "duration": "Duration: -",
+      "location": "/storage/emulated/0/Download"
+    },
+    "labels": {
+      "url": "YOUTUBE URL",
+      "info": "VIDEO INFORMATION",
+      "format": "FORMAT",
+      "quality": "QUALITY",
+      "location": "SAVE LOCATION",
+      "progress": "DOWNLOADING",
+      "speed": "SPEED",
+      "status": "STATUS"
+    }
+  },
+
+  "cli": {
+    "enabled": true,
+    "commands": {
+      "download": {
+        "description": "Download video from URL",
+        "usage": "ytdown-cli download <url> [options]",
+        "options": [
+          "-f, --format",
+          "-q, --quality",
+          "-o, --output",
+          "-n, --name",
+          "--subtitles",
+          "--playlist"
+        ]
+      },
+      "list": {
+        "description": "List available formats",
+        "usage": "ytdown-cli list <url>"
+      },
+      "history": {
+        "description": "View download history",
+        "usage": "ytdown-cli history"
+      },
+      "config": {
+        "description": "Edit configuration",
+        "usage": "ytdown-cli config"
+      },
+      "check": {
+        "description": "Check system status",
+        "usage": "ytdown-cli check"
+      },
+      "update": {
+        "description": "Check for updates",
+        "usage": "ytdown-cli update"
+      },
+      "clear": {
+        "description": "Clear history",
+        "usage": "ytdown-cli clear"
+      },
+      "help": {
+        "description": "Show help",
+        "usage": "ytdown-cli help [command]"
+      }
+    },
+    "colors": {
+      "enabled": true,
+      "theme": "neon"
+    },
+    "progress": {
+      "type": "bar",
+      "show_percentage": true,
+      "show_speed": true,
+      "show_eta": true
+    }
+  },
+
+  "history": {
+    "enabled": true,
+    "max_entries": 50,
+    "save_path": "~/.ytdown/history.json",
+    "fields": [
+      "title",
+      "url",
+      "format",
+      "quality",
+      "size",
+      "duration",
+      "timestamp",
+      "status",
+      "path"
+    ],
+    "export": {
+      "enabled": false,
+      "format": "json",
+      "path": "~/.ytdown/export/"
+    },
+    "clear_on_exit": false,
+    "retention_days": 365
+  },
+
+  "proxy": {
+    "enabled": false,
+    "type": "http",
+    "host": "",
+    "port": "",
+    "username": "",
+    "password": "",
+    "http_proxy": "",
+    "https_proxy": "",
+    "ftp_proxy": "",
+    "no_proxy": "localhost,127.0.0.1"
+  },
+
+  "network": {
+    "timeout": 30,
+    "retries": 3,
+    "delay": 1,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "headers": {
+      "Accept": "*/*",
+      "Accept-Encoding": "gzip, deflate",
+      "Accept-Language": "en-US,en;q=0.9",
+      "Connection": "keep-alive"
+    },
+    "cookies": {
+      "enabled": false,
+      "path": "~/.ytdown/cookies.txt"
+    }
+  },
+
+  "api": {
+    "enabled": false,
+    "host": "localhost",
+    "port": 8080,
+    "endpoints": {
+      "download": "/api/download",
+      "info": "/api/info",
+      "history": "/api/history",
+      "status": "/api/status",
+      "cancel": "/api/cancel"
+    },
+    "authentication": {
+      "enabled": false,
+      "type": "token",
+      "token": "",
+      "username": "",
+      "password": ""
+    },
+    "cors": {
+      "enabled": false,
+      "origins": ["*"]
+    },
+    "rate_limit": {
+      "enabled": true,
+      "requests_per_minute": 60
+    }
+  },
+
+  "logging": {
+    "enabled": true,
+    "level": "info",
+    "file": "~/.ytdown/ytdown.log",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "date_format": "%Y-%m-%d %H:%M:%S",
+    "max_size": 10485760,
+    "backup_count": 5,
+    "console": true,
+    "colors": true
+  },
+
+  "security": {
+    "ssl_verify": true,
+    "safe_mode": false,
+    "validate_url": true,
+    "scan_downloads": false,
+    "allowed_domains": [
+      "youtube.com",
+      "youtu.be",
+      "m.youtube.com",
+      "www.youtube.com"
+    ],
+    "blocked_domains": [],
+    "content_filter": {
+      "enabled": false,
+      "adult": false,
+      "violence": false,
+      "hate_speech": false
+    }
+  },
+
+  "performance": {
+    "threads": 1,
+    "cache": {
+      "enabled": true,
+      "size": 100,
+      "ttl": 3600
+    },
+    "memory_limit": 512,
+    "cpu_priority": "normal",
+    "io_priority": "normal"
+  },
+
+  "updates": {
+    "auto_check": true,
+    "check_interval": 86400,
+    "stable": true,
+    "beta": false,
+    "source": "github",
+    "notify": true,
+    "auto_install": false
+  },
+
+  "backup": {
+    "enabled": false,
+    "interval": 86400,
+    "max_backups": 5,
+    "path": "~/.ytdown/backups/",
+    "compress": true
+  },
+
+  "plugins": {
+    "enabled": false,
+    "path": "~/.ytdown/plugins/",
+    "auto_load": true,
+    "allowed": []
+  },
+
+  "extensions": {
+    "enabled": false,
+    "path": "~/.ytdown/extensions/",
+    "auto_load": true,
+    "allowed": []
+  },
+
+  "termux": {
+    "enabled": true,
+    "storage_path": "/data/data/com.termux/files/home/storage",
+    "external_storage": "/data/data/com.termux/files/home/storage/shared",
+    "download_path": "/data/data/com.termux/files/home/storage/downloads",
+    "music_path": "/data/data/com.termux/files/home/storage/music",
+    "video_path": "/data/data/com.termux/files/home/storage/video",
+    "notification": {
+      "enabled": true,
+      "sound": true,
+      "vibrate": true,
+      "priority": "high"
+    },
+    "keyboard_shortcuts": {
+      "enabled": true,
+      "fetch": "Ctrl+F",
+      "download": "Ctrl+D",
+      "history": "Ctrl+H",
+      "cancel": "Ctrl+C"
+    },
+    "vnc": {
+      "enabled": false,
+      "display": ":1",
+      "resolution": "800x600"
+    }
+  },
+
+  "linux": {
+    "desktop_entry": {
+      "enabled": true,
+      "path": "/usr/share/applications/"
+    },
+    "xdg": {
+      "enabled": true,
+      "defaults": "~/.config/mimeapps.list"
+    },
+    "integration": {
+      "file_manager": true,
+      "shell": true
+    }
+  },
+
+  "windows": {
+    "enabled": false,
+    "registry": {
+      "enabled": true,
+      "path": "HKEY_CURRENT_USER\\Software\\YTDown"
+    },
+    "startup": {
+      "enabled": false,
+      "path": "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"
+    }
+  },
+
+  "macos": {
+    "enabled": false,
+    "bundle_id": "com.ytdown.app",
+    "plist": "~/.ytdown/com.ytdown.app.plist"
+  },
+
+  "docker": {
+    "enabled": false,
+    "image": "ytdown:latest",
+    "container_name": "ytdown",
+    "ports": {
+      "gui": "5901",
+      "api": "8080"
+    },
+    "volumes": {
+      "downloads": "/downloads",
+      "config": "/config"
+    }
+  },
+
+  "custom": {
+    "enabled": false,
+    "variables": {},
+    "scripts": {
+      "pre_download": "",
+      "post_download": "",
+      "pre_convert": "",
+      "post_convert": ""
+    },
+    "hooks": {
+      "enabled": false,
+      "path": "~/.ytdown/hooks/"
+    }
+  }
+}
